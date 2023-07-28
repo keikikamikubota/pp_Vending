@@ -35,13 +35,27 @@ class VendingMachine
     # 自動販売機に入っているお金を0円に戻す
     @slot_money = 0
   end
+
+   #値段と名前の属性からなるジュースを１種類格納できる。初期状態で、コーラ（値段:120円、名前”コーラ”）を5本格納している。
+    class Drink
+    attr_accessor :price, :name
+    def initialize(price, name)
+      self.price = price
+      self.name = name
+    end
 end
 
-test = VendingMachine.new
-puts test.slot_money(10)
-puts test.slot_money(50)
-puts test.slot_money(100)
-puts test.slot_money(500)
-puts test.slot_money(1000)
+end
 
-puts test.return_money
+
+
+# test = VendingMachine.new
+ test = Drink.new(120, "cola")
+ puts test
+# puts test.slot_money(10)
+# puts test.slot_money(50)
+# puts test.slot_money(100)
+# puts test.slot_money(500)
+# puts test.slot_money(1000)
+
+# puts test.return_money
