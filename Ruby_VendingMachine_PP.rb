@@ -5,6 +5,8 @@ class VendingMachine
   # 10円玉、50円玉、100円玉、500円玉、1000円札を１つずつ投入できる。
   #freezeがあるため、お金の額を変えられない。
   MONEY = [10, 50, 100, 500, 1000].freeze
+  STOCK = {name: 'コーラ', price: 120, name: 'コーラ', price: 120, name: 'コーラ', price: 120,
+          name: 'コーラ', price: 120, name: 'コーラ', price: 120}
 
   # （自動販売機に投入された金額をインスタンス変数の @slot_money に代入する）
   def initialize
@@ -35,13 +37,24 @@ class VendingMachine
     # 自動販売機に入っているお金を0円に戻す
     @slot_money = 0
   end
+
+
+  def confirm_drink
+    STOCK.length
+    STOCK.keys
+    STOCK.values
+  end
+
 end
 
 test = VendingMachine.new
-puts test.slot_money(10)
-puts test.slot_money(50)
-puts test.slot_money(100)
-puts test.slot_money(500)
-puts test.slot_money(1000)
+puts test.confirm_drink
 
-puts test.return_money
+
+# puts test.slot_money(10)
+# puts test.slot_money(50)
+# puts test.slot_money(100)
+# puts test.slot_money(500)
+# puts test.slot_money(1000)
+
+# puts test.return_money
