@@ -1,3 +1,33 @@
+class Power_on
+  def self.start_menu
+
+    puts "自動販売機にお金を投入してください"
+    puts "1:お金を投入する"
+    puts "2:合計を取得する"
+    puts "3:払い戻しをする"
+
+    input_number = gets.chomp
+
+    number = ['1', '2', '3']
+
+    while true
+      if number.include?(input_number)
+        
+        return(input_number)
+
+      else
+        puts "数字が間違っています！"
+        puts "自動販売機にお金を投入してください"
+        puts "1:お金を投入する"
+        puts "2:合計を取得する"
+        puts "3:払い戻しをする"
+
+        input_number = gets.chomp
+      end
+    end
+  end
+end
+
 class VendingMachine
   # ステップ０　お金の投入と払い戻しの例コード
   # ステップ１　扱えないお金の例コード
@@ -36,22 +66,44 @@ class VendingMachine
     @slot_money = 0
   end
 
-   #値段と名前の属性からなるジュースを１種類格納できる。初期状態で、コーラ（値段:120円、名前”コーラ”）を5本格納している。
-    class Drink
-    attr_accessor :price, :name
-    def initialize(price, name)
-      self.price = price
-      self.name = name
+  def money_case 
+    # wallet = VendingMachine.new
+    selected_number = Power_on.start_menu
+    puts selected_number
+    case selected_number
+    when 1 
+      puts "お金を投入してください"
+      input_money = gets
+      wallet.slot_money(input_money)
+      puts "投入金額は#{@slot_money}です"
+    when 2
+    when 3
+    else
+      puts "予期せぬエラーです"
     end
+  end
 end
 
+class Drink
+  attr_accessor :name, :price, :stock
+  
+  def initialize(name, price, stock)
+    @name = name
+    @price = price
+    @stock = stock
+  end
 end
 
+class Cola
+  drink = Drink.new('コーラ', 120, 5)
+  puts 'この自動販売機に初期状態で入っている飲み物は120円のコーラが5本入っています。' 
+end
+
+vm = VendingMachine.new
+vm.money_case
 
 
-# test = VendingMachine.new
- test = Drink.new(120, "cola")
- puts test
+
 # puts test.slot_money(10)
 # puts test.slot_money(50)
 # puts test.slot_money(100)
