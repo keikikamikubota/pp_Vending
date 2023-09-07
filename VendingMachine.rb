@@ -1,4 +1,5 @@
 require './Introduction'
+require './Drink'
 
 class VendingMachine
   MONEY = [10, 50, 100, 500, 1000].freeze
@@ -44,7 +45,7 @@ class VendingMachine
     end
   end
 
-  def biginning
+  def beginning
     puts "自動販売機にお金を投入してください"
     puts "1:お金を投入する"
     puts "2:合計を取得する"
